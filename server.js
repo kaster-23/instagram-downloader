@@ -109,6 +109,29 @@ app.post('/api/download', async (req, res) => {
           }
 });
 
+// Proxy endpoint to force video download (cross-origin URLs can't use download attribute)
+app.get('/api/proxy-download', async (req, res) => {
+            try {
+                          const videoUrl = req.query.url;
+                          if (!videoUrl) {
+                                          return res.status(400).json({ error: 'Video URL is required' });
+                          }
+
+                          const response = await axios.get(videoUrl, { responseType: 'stream' });
+
+                          res.setHeader('Content-Disposition', 'attachment; filename="instagram_video.mp4"');
+                          res.setHeader('Content-Type', response.headers['content-type'] || 'video/mp4');
+                          if (response.headers['content-length']) {
+                                          res.setHeader('Content-Length', response.headers['content-length']);
+                          }
+
+                          response.data.pipe(res);
+            } catch (error) {
+                          console.error('Proxy download error:', error.message);
+                          res.status(500).json({ error: 'Failed to proxy video download' });
+            }
+});
+
 // Start server
 app.listen(PORT, () => {
           console.log(`Server running on port ${PORT}`);
