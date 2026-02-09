@@ -119,8 +119,12 @@ app.get('/api/proxy-download', async (req, res) => {
 
                           const response = await axios.get(videoUrl, { responseType: 'stream' });
 
-                          res.setHeader('Content-Disposition', 'attachment; filename="instagram_video.mp4"');
-                          res.setHeader('Content-Type', response.headers['content-type'] || 'video/mp4');
+                          // Extract video ID from URL (e.g., DSdHQR-gQXD from /reel/DSdHQR-gQXD/)
+                          const urlMatch = videoUrl.match(/\/(?:reel|p|tv)\/([^/?]+)/);
+                          const videoId = urlMatch ? urlMatch[1] : 'video';
+                          const filename = `SaveGram_${videoId}.mp4`;
+
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);                          res.setHeader('Content-Type', response.headers['content-type'] || 'video/mp4');
                           if (response.headers['content-length']) {
                                           res.setHeader('Content-Length', response.headers['content-length']);
                           }
