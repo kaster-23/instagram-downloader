@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaveGram — Download Instagram Videos & Reels in HD | Free & Fast</title>
+  <meta name="description" content="Download Instagram videos, Reels, and posts in HD quality. Free, fast, no watermark. Paste the link and save instantly. Works on mobile and desktop.">
+  <meta name="keywords" content="instagram video downloader, download instagram reels, save instagram videos, instagram reel saver, download IG videos HD">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yourdomain.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SaveGram — Download Instagram Videos & Reels in HD">
+  <meta property="og:description" content="Free Instagram video downloader. Save Reels, posts, and videos in HD quality instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/">
+  <meta property="og:image" content="https://yourdomain.com/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SaveGram — Download Instagram Videos & Reels">
+  <meta name="twitter:description" content="Paste any Instagram link. Download the video in HD. Free, fast, no signup.">
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SaveGram",
+    "url": "https://yourdomain.com/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Download Instagram videos, Reels, and posts in HD quality for free."
+  }
+  </script>
+
+  <!-- Schema: HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Download Instagram Videos",
+    "description": "Download any Instagram video or Reel in 3 simple steps.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Copy the Instagram link",
+        "text": "Open Instagram, find the video or Reel you want to download, tap the three dots (⋯) and select 'Copy Link'."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Paste the link",
+        "text": "Come back to SaveGram and paste the copied Instagram URL into the input field."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Download the video",
+        "text": "Click 'Download' and your video will be saved to your device in HD quality."
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is it free to download Instagram videos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, SaveGram is completely free. No signup, no hidden fees. Just paste the link and download."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I download Instagram Reels?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. SaveGram supports Instagram Reels, video posts, and IGTV. Paste any Instagram video URL to download it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this work on iPhone and Android?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. SaveGram works on all devices — iPhone, Android, tablets, and desktop computers. No app installation needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a watermark on downloaded videos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Videos are downloaded in their original quality without any added watermarks."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========== RESET & VARIABLES ========== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0c;
+      --surface: #131318;
+      --surface-2: #1a1a22;
+      --border: #2a2a35;
+      --text: #e8e8ed;
+      --text-dim: #8888a0;
+      --accent: #ff3366;
+      --accent-glow: rgba(255, 51, 102, 0.25);
+      --accent-soft: rgba(255, 51, 102, 0.08);
+      --success: #00e676;
+      --success-glow: rgba(0, 230, 118, 0.2);
+      --error: #ff5252;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --font: 'Outfit', -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ========== BACKGROUND ATMOSPHERE ========== */
+    .bg-grid {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        radial-gradient(ellipse 600px 400px at 50% 0%, rgba(255,51,102,0.06), transparent),
+        radial-gradient(ellipse 400px 300px at 80% 60%, rgba(120,80,255,0.04), transparent),
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+    }
+
+    /* ========== LAYOUT ========== */
+    .wrapper {
+      position: relative; z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ========== AD SLOT (top — outside conversion flow) ========== */
+    .ad-slot {
+      max-width: 728px;
+      margin: 16px auto;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-dim);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+    .ad-slot--top { margin-top: 12px; }
+    .ad-slot--bottom { margin-top: 48px; margin-bottom: 24px; }
+
+    /* ========== HEADER / NAV ========== */
+    header {
+      padding: 20px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--accent), #cc1a4a);
+      border-radius: 9px;
+      display: grid; place-items: center;
+      font-size: 16px;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    nav a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); }
+
+    /* ========== HERO ========== */
+    .hero {
+      text-align: center;
+      padding: 72px 0 48px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--accent), #ff6b9d, #cc44ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      color: var(--text-dim);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ========== DOWNLOAD CARD ========== */
+    .dl-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dl-card::before {
+      content: '';
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 200px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+    }
+    .input-wrap {
+      flex: 1;
+      position: relative;
+    }
+    .input-wrap input {
+      width: 100%;
+      padding: 16px 18px 16px 46px;
+      background: var(--surface-2);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .input-wrap input::placeholder { color: var(--text-dim); }
+    .input-wrap input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .input-icon {
+      position: absolute;
+      left: 16px; top: 50%; transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    .btn-dl {
+      padding: 16px 28px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.15s, box-shadow 0.25s, background 0.2s;
+      box-shadow: 0 4px 24px var(--accent-glow);
+    }
+    .btn-dl:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 32px var(--accent-glow);
+    }
+    .btn-dl:active:not(:disabled) { transform: translateY(0); }
+    .btn-dl:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* ========== STATES ========== */
+    .status {
+      margin-top: 20px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    .status.show { display: flex; }
+    .status.loading {
+      background: var(--accent-soft);
+      border: 1px solid rgba(255,51,102,0.15);
+      color: var(--accent);
+    }
+    .status.success {
+      background: rgba(0,230,118,0.06);
+      border: 1px solid rgba(0,230,118,0.15);
+      color: var(--success);
+    }
+    .status.error {
+      background: rgba(255,82,82,0.06);
+      border: 1px solid rgba(255,82,82,0.15);
+      color: var(--error);
+    }
+
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2.5px solid rgba(255,51,102,0.2);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ========== RESULT CARD ========== */
+    .result {
+      display: none;
+      margin-top: 20px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .result.show { display: block; }
+    .result video {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      background: #000;
+    }
+    .result-actions {
+      padding: 16px;
+      display: flex;
+      gap: 10px;
+    }
+    .btn-save {
+      flex: 1;
+      padding: 14px;
+      background: var(--success);
+      color: #000;
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.25s;
+      box-shadow: 0 4px 20px var(--success-glow);
+    }
+    .btn-save:hover { transform: translateY(-1px); }
+    .btn-copy {
+      padding: 14px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-family: var(--font);
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-copy:hover { border-color: var(--text-dim); color: var(--text); }
+
+    /* ========== HOW-TO SECTION ========== */
+    .how-to {
+      padding: 64px 0 0;
+    }
+    .how-to h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .step-num {
+      display: inline-flex;
+      width: 36px; height: 36px;
+      align-items: center; justify-content: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 50%;
+      margin-bottom: 14px;
+      border: 1px solid rgba(255,51,102,0.15);
+    }
+    .step h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .step p {
+      color: var(--text-dim);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    /* ========== FAQ ========== */
+    .faq {
+      padding: 64px 0 0;
+    }
+    .faq h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    summary {
+      padding: 18px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.92rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--text-dim);
+      font-weight: 400;
+      transition: transform 0.2s;
+    }
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+    summary:hover { color: var(--accent); }
+    .faq-answer {
+      padding: 0 20px 18px;
+      color: var(--text-dim);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      margin-top: 64px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.78rem;
+    }
+    footer a { color: var(--text-dim); text-decoration: underline; }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 520px) {
+      .input-row { flex-direction: column; }
+      .btn-dl { width: 100%; }
+      .dl-card { padding: 24px 18px; }
+      .hero { padding: 48px 0 32px; }
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero { animation: fadeUp 0.6s ease-out; }
+    .dl-card { animation: fadeUp 0.6s ease-out 0.15s both; }
+    .how-to { animation: fadeUp 0.5s ease-out 0.3s both; }
+  </style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<div class="wrapper">
+
+  <!-- NAV -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">▶</div>
+      SaveGram
+    </div>
+    <nav>
+      <a href="#how-to">How it works</a>
+    </nav>
+  </header>
+
+  <!-- AD SLOT: Top banner (outside conversion flow) -->
+  <div class="ad-slot ad-slot--top" aria-hidden="true">
+    <!-- AdSense: Leaderboard 728x90 -->
+    <span>Ad Space — 728×90</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Download Instagram<br><span class="gradient">Videos & Reels</span></h1>
+    <p>Paste any Instagram link. Get the video in HD. Free, fast, no watermark, no signup.</p>
+  </section>
+
+  <!-- DOWNLOAD CARD -->
+  <div class="dl-card" role="main">
+    <form id="dlForm" autocomplete="off">
+      <div class="input-row">
+        <div class="input-wrap">
+          <span class="input-icon">🔗</span>
+          <input
+            type="url"
+            id="urlInput"
+            name="url"
+            placeholder="Paste Instagram link here…"
+            aria-label="Instagram video URL"
+            required
+          >
+        </div>
+        <button class="btn-dl" type="submit" id="dlBtn">Download</button>
+      </div>
+    </form>
+
+    <!-- Status messages -->
+    <div class="status" id="status" role="status" aria-live="polite">
+      <div class="spinner" id="statusSpinner"></div>
+      <span id="statusText"></span>
+    </div>
+
+    <!-- Result -->
+    <div class="result" id="result">
+      <video id="preview" controls playsinline preload="metadata"></video>
+      <div class="result-actions">
+        <a class="btn-save" id="saveBtn" href="#" download="savegram-video.mp4">⬇ Save to Device</a>
+        <button class="btn-copy" id="copyBtn">Copy URL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW-TO -->
+  <section class="how-to" id="how-to">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Copy the Link</h3>
+        <p>Open Instagram, tap ⋯ on any video or Reel, and select "Copy Link".</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Paste Here</h3>
+        <p>Come back and paste the URL into the field above.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Download</h3>
+        <p>Hit Download. Your video saves instantly in HD quality.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details>
+      <summary>Is it free to download Instagram videos?</summary>
+      <div class="faq-answer">Yes, SaveGram is completely free. No signup, no hidden fees. Just paste the link and download.</div>
+    </details>
+
+    <details>
+      <summary>Can I download Instagram Reels?</summary>
+      <div class="faq-answer">Yes. SaveGram supports Instagram Reels, video posts, and IGTV. Paste any Instagram video URL to download it.</div>
+    </details>
+
+    <details>
+      <summary>Does this work on iPhone and Android?</summary>
+      <div class="faq-answer">Yes. SaveGram works on all devices — iPhone, Android, tablets, and desktop computers. No app installation needed.</div>
+    </details>
+
+    <details>
+      <summary>Is there a watermark on downloaded videos?</summary>
+      <div class="faq-answer">No. Videos are downloaded in their original quality without any added watermarks.</div>
+    </details>
+
+    <details>
+      <summary>Is this legal?</summary>
+      <div class="faq-answer">Downloading videos for personal use is generally acceptable. Always respect content creators' rights and Instagram's terms of service. Do not re-upload or redistribute content without permission.</div>
+    </details>
+  </section>
+
+  <!-- AD SLOT: Bottom (outside conversion flow) -->
+  <div class="ad-slot ad-slot--bottom" aria-hidden="true">
+    <!-- AdSense: Large Rectangle 336x280 or Responsive -->
+    <span>Ad Space — 336×280</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 SaveGram. For personal use only. Not affiliated with Instagram or Meta.</p>
+    <p style="margin-top:6px"><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/dmca">DMCA</a></p>
+  </footer>
+
+</div>
+
+<script>
+// ============================================================
+// FRONTEND LOGIC — Communicates with your backend API
+// ============================================================
+const API_BASE = '/api'; // Change to your deployed API URL
+
+const form = document.getElementById('dlForm');
+const input = document.getElementById('urlInput');
+const btn = document.getElementById('dlBtn');
+const status = document.getElementById('status');
+const statusSpinner = document.getElementById('statusSpinner');
+const statusText = document.getElementById('statusText');
+const result = document.getElementById('result');
+const preview = document.getElementById('preview');
+const saveBtn = document.getElementById('saveBtn');
+const copyBtn = document.getElementById('copyBtn');
+
+// URL validation
+function isValidInstagramUrl(url) {
+  return /^https?:\/\/(www\.)?instagram\.com\/(p|reel|reels|tv)\/[A-Za-z0-9_-]+/i.test(url);
+}
+
+function showStatus(type, msg) {
+  status.className = `status show ${type}`;
+  statusSpinner.style.display = type === 'loading' ? 'block' : 'none';
+  statusText.textContent = msg;
+}
+
+function hideStatus() {
+  status.className = 'status';
+}
+
+function showResult(videoUrl) {
+  preview.src = videoUrl;
+  saveBtn.href = videoUrl;
+  result.className = 'result show';
+}
+
+function hideResult() {
+  result.className = 'result';
+  preview.src = '';
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const url = input.value.trim();
+
+  if (!url) return;
+
+  if (!isValidInstagramUrl(url)) {
+    showStatus('error', 'Please enter a valid Instagram post or Reel URL.');
+    hideResult();
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Fetching…';
+  hideResult();
+  showStatus('loading', 'Extracting video… This takes a few seconds.');
+
+  try {
+    const res = await fetch(`${API_BASE}/download`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(data.error || 'Download failed');
+
+    showStatus('success', '✓ Video found — preview and save below.');
+    showResult(data.videoUrl);
+  } catch (err) {
+    showStatus('error', err.message || 'Something went wrong. Please try again.');
+    hideResult();
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Download';
+  }
+});
+
+// Copy video URL
+copyBtn.addEventListener('click', () => {
+  const url = saveBtn.href;
+  if (url && url !== '#') {
+    navigator.clipboard.writeText(url).then(() => {
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => copyBtn.textContent = 'Copy URL', 1500);
+    });
+  }
+});
+
+// Paste shortcut — auto-focus and paste
+input.addEventListener('focus', async () => {
+  if (!input.value && navigator.clipboard?.readText) {
+    try {
+      const clip = await navigator.clipboard.readText();
+      if (isValidInstagramUrl(clip)) {
+        input.value = clip;
+        input.dispatchEvent(new Event('input'));
+      }
+    } catch {}
+  }
+});
+</script>
+
+</body>
+</html>
