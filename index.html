@@ -312,7 +312,7 @@
                 downloadBtn.disabled = false;
                 
                 if (data.success && data.videoUrl) {
-                    showSuccess(data), url;
+                    showSuccess(data, url);
                 } else if (data.needsApiKey) {
                     showApiNotice(data);
                 } else {
