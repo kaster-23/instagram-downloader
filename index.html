@@ -312,7 +312,7 @@
                 downloadBtn.disabled = false;
                 
                 if (data.success && data.videoUrl) {
-                    showSuccess(data);
+                    showSuccess(data), url;
                 } else if (data.needsApiKey) {
                     showApiNotice(data);
                 } else {
@@ -327,12 +327,12 @@
             }
         }
         
-        function showSuccess(data) {
+        function showSuccess(data, url) {
             const resultDiv = document.getElementById('result');
             resultDiv.className = 'result success show';
             resultDiv.innerHTML = `
                 <p style="color: #2d5016; margin-bottom: 10px;">✅ Video ready for download!</p>
-        <a href="/api/proxy-download?url=${encodeURIComponent(data.videoUrl)}" class="download-btn" download target="_blank">                    📥 Download Video
+        <a href="/api/proxy-download?url=${encodeURIComponent(data.videoUrl)}&originalUrl=${encodeURIComponent(url)}" class="download-btn" download target="_blank">                    📥 Download Video
                 </a>
             `;
         }
