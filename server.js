@@ -114,6 +114,7 @@ app.post('/api/download', async (req, res) => {
 app.get('/api/proxy-download', async (req, res) => {
             try {
                           const videoUrl = req.query.url;
+                          const originalUrl = req.query.originalUrl || '';
                           if (!videoUrl) {
                                           return res.status(400).json({ error: 'Video URL is required' });
                           }
@@ -121,7 +122,7 @@ app.get('/api/proxy-download', async (req, res) => {
                           const response = await axios.get(videoUrl, { responseType: 'stream' });
 
                           // Extract video ID from URL (e.g., DSdHQR-gQXD from /reel/DSdHQR-gQXD/)
-                          const urlMatch = videoUrl.match(/\/(?:reel|p|tv)\/([^/?]+)/);
+                          const urlMatch = originalUrl.match(/\/(?:reel|p|tv)\/([^/?]+)/);
                           const videoId = urlMatch ? urlMatch[1] : 'video';
                           const filename = `SaveGram_${videoId}.mp4`;
 
